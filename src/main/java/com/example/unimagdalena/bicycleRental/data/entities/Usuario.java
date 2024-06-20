@@ -38,7 +38,7 @@ public class Usuario {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_roles", nullable = false)
-    private Role idRoles;
+    private Roles idRoles;
 
     @OneToMany(mappedBy = "idUsuario")
     private Set<Pqr> pqrs = new LinkedHashSet<>();

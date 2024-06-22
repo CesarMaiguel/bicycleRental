@@ -41,7 +41,7 @@ public class Usuario {
     private Roles idRoles;
 
     @OneToMany(mappedBy = "idUsuario")
-    private Set<Pqr> pqrs = new LinkedHashSet<>();
+    private Set<Pqrs> pqrs = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idUsuario")
     private Set<Reserva> reservas = new LinkedHashSet<>();

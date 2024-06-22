@@ -10,7 +10,7 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name = "pqrs")
-public class Pqr {
+public class Pqrs {
     @Id
     @Column(name = "id_pqrs", nullable = false)
     private Integer id;

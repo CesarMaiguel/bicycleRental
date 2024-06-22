@@ -29,8 +29,9 @@ public class Bicicleta {
     @Column(name = "id_reserva", nullable = false)
     private Integer idReserva;
 
-    @OneToMany(mappedBy = "idBicicleta")
-    private Set<Producto> productos = new LinkedHashSet<>();
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_producto", nullable = false)
+    private Producto idProducto;
 
     @OneToMany(mappedBy = "idBicicleta")
     private Set<Reserva> reservas = new LinkedHashSet<>();

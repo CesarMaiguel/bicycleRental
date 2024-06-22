@@ -31,10 +31,6 @@ public class Producto {
     @Column(name = "disponibilidad", nullable = false)
     private Boolean disponibilidad = false;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_bicicleta", nullable = false)
-    private Bicicleta idBicicleta;
-
     @Column(name = "tipo", nullable = false, length = 50)
     private String tipo;
 

@@ -4,9 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -16,7 +15,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario", nullable = false)
-    private Integer id;
+    private Integer idUsuario;
 
     @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
@@ -34,16 +33,9 @@ public class Usuario {
     private String direccion;
 
     @Column(name = "fecha_registro", nullable = false)
-    private Instant fechaRegistro;
+    private LocalDate fechaRegistro;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_roles", nullable = false)
-    private Roles idRoles;
-
-    @OneToMany(mappedBy = "idUsuario")
-    private Set<Pqrs> pqrs = new LinkedHashSet<>();
-
-    @OneToMany(mappedBy = "idUsuario")
-    private Set<Reserva> reservas = new LinkedHashSet<>();
+    @Column(name = "id_roles", nullable = false)
+    private BigDecimal idRoles;
 
 }

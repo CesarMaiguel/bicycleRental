@@ -26,14 +26,12 @@ public class Bicicleta {
     @Column(name = "marca", nullable = false, length = 50)
     private String marca;
 
+    @OneToMany(mappedBy = "idBicicleta")
     @Column(name = "id_reserva", nullable = false)
-    private Integer idReserva;
+    private Set<Reserva> reservas = new LinkedHashSet<>();
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_producto", nullable = false)
     private Producto idProducto;
-
-    @OneToMany(mappedBy = "idBicicleta")
-    private Set<Reserva> reservas = new LinkedHashSet<>();
 
 }

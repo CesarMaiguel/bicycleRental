@@ -1,5 +1,4 @@
 package com.example.unimagdalena.bicycleRental.web.models;
-
 import lombok.Data;
 
 import java.math.BigDecimal;

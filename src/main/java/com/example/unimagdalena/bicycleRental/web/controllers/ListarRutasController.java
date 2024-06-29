@@ -1,5 +1,6 @@
 package com.example.unimagdalena.bicycleRental.web.controllers;
 
+import com.example.unimagdalena.bicycleRental.service.interfaz.RutaService;
 import com.example.unimagdalena.bicycleRental.web.models.RutasResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,12 +19,14 @@ import java.util.List;
 @Slf4j
 public class ListarRutasController {
 
+    private final RutaService rutaService;
+
     @GetMapping("/consultar")
     public ResponseEntity<List<RutasResponse>> consultarRutas() {
         log.info("Request - consultarRutas");
         log.info("Response - consultarRutas -> statusCode: {}",
                 HttpStatus.OK.value());
-        return ResponseEntity.ok(List.of(new RutasResponse(), new RutasResponse()));
+        return ResponseEntity.ok(rutaService.getAllRutas());
     }
 
 }

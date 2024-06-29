@@ -34,7 +34,4 @@ public class Producto {
     @Column(name = "tipo", nullable = false, length = 50)
     private String tipo;
 
-    @Column(name = "id_tipoproducto", nullable = false)
-    private Integer idTipoproducto;
-
 }

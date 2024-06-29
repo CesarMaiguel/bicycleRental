@@ -1,0 +1,557 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+tags:
+  - name: API de alquiler de biciletas
+    description: API de ejemplo para demostración
+paths:
+  /vender-producto/vender:
+    post:
+      tags:
+        - vender-producto-controller
+      operationId: venderProducto
+      parameters:
+        - name: idProducto
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /reserva-bicicleta/reservar:
+    post:
+      tags:
+        - reservar-bicicleta-controller
+      operationId: reservarBicicleta
+      parameters:
+        - name: idBicicleta
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /registrar-usuarios/registrar:
+    post:
+      tags:
+        - registrar-usuario-controller
+      operationId: registrarUsuario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsuarioRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsuarioResponse'
+  /registrar-ruta/registrar:
+    post:
+      tags:
+        - registrar-ruta-controller
+      operationId: registrarRutas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RutasRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RutasResponse'
+  /registrar-productos/registrar:
+    post:
+      tags:
+        - registrar-producto-controller
+      operationId: registrarProducto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductoRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductoResponse'
+  /recibir-bicicleta/recibir:
+    post:
+      tags:
+        - recibir-bicicleta-controller
+      operationId: recibirBicicleta
+      parameters:
+        - name: idBicicleta
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /programar-ruta/programar:
+    post:
+      tags:
+        - programar-ruta-controller
+      operationId: programarRuta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProgramarRutasRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /modificar-ruta/modificar:
+    post:
+      tags:
+        - modificar-ruta-controller
+      operationId: modificarRuta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RutasRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RutasResponse'
+  /modificar-producto/modificar:
+    post:
+      tags:
+        - modificar-producto-controller
+      operationId: modificarProducto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductoRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductoResponse'
+  /enviar-pqr/enviar:
+    post:
+      tags:
+        - enviar-pqrs-controller
+      operationId: enviarPQR
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PQRSRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /entregar-bicicleta/entregar:
+    post:
+      tags:
+        - entregar-bicicleta-controller
+      operationId: entregarBicicleta
+      parameters:
+        - name: idBicicleta
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /comprar-producto/comprar:
+    post:
+      tags:
+        - comprar-producto-controller
+      operationId: comprarProducto
+      parameters:
+        - name: idProducto
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /alquilar-producto/alquilar:
+    post:
+      tags:
+        - API de alquiler de biciletas
+      summary: Alquilar un producto por identificador
+      description: El objetivo es alquilar un producto
+      operationId: alquilarProducto
+      parameters:
+        - name: idProducto
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /usuarios/consultar:
+    get:
+      tags:
+        - listar-usuarios-controller
+      operationId: consultarUsuarios
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsuarioResponse'
+  /rutas/consultar:
+    get:
+      tags:
+        - listar-rutas-controller
+      operationId: consultarRutas
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RutasResponse'
+  /reservas/consultar:
+    get:
+      tags:
+        - listar-reservas-controller
+      operationId: consultarReservas
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReservasResponse'
+  /producto-inventario/consultar:
+    get:
+      tags:
+        - listar-productos-inventario-controller
+      operationId: consultarProductosInventario
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductoResponse'
+  /historial-transacciones/consultar:
+    get:
+      tags:
+        - historial-transacciones-controller
+      operationId: consultarHistorialTransacciones
+      parameters:
+        - name: idUsuario
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductosPorOrdenesResponse'
+  /catalogos-producto/consultar:
+    get:
+      tags:
+        - catalogo-productos-controller
+      operationId: consultarCatalogoProductos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CatalogoProductosResponse'
+  /eliminar-ruta/eliminar:
+    delete:
+      tags:
+        - eliminar-ruta-controller
+      operationId: eliminarRuta
+      parameters:
+        - name: idRuta
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /eliminar-producto/eliminar:
+    delete:
+      tags:
+        - eliminar-producto-controller
+      operationId: eliminarProducto
+      parameters:
+        - name: idProducto
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+components:
+  schemas:
+    UsuarioRequest:
+      type: object
+      properties:
+        idUsuario:
+          type: number
+        nombre:
+          type: string
+        apellido:
+          type: string
+        email:
+          type: string
+        telefono:
+          type: string
+        direccion:
+          type: string
+        fechaRegistro:
+          type: string
+        idRoles:
+          type: number
+    UsuarioResponse:
+      type: object
+      properties:
+        idUsuario:
+          type: number
+        nombre:
+          type: string
+        apellido:
+          type: string
+        email:
+          type: string
+        telefono:
+          type: string
+        direccion:
+          type: string
+        fechaRegistro:
+          type: string
+          format: date
+        idRoles:
+          type: number
+    RutasRequest:
+      type: object
+      properties:
+        idRuta:
+          type: number
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        estado:
+          type: string
+    RutasResponse:
+      type: object
+      properties:
+        idRuta:
+          type: number
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        estado:
+          type: string
+    ProductoRequest:
+      type: object
+      properties:
+        idProducto:
+          type: number
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        precio:
+          type: number
+        estado:
+          type: string
+        disponibilidad:
+          type: boolean
+        idBicicleta:
+          type: number
+        idTipoProducto:
+          type: number
+    ProductoResponse:
+      type: object
+      properties:
+        idProducto:
+          type: number
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        precio:
+          type: number
+        estado:
+          type: string
+        disponibilidad:
+          type: boolean
+        idBicicleta:
+          type: number
+        idTipoProducto:
+          type: string
+    ProgramarRutasRequest:
+      type: object
+      properties:
+        programacion:
+          type: string
+        fecha:
+          type: string
+        idRuta:
+          type: number
+        duracion:
+          type: string
+        dificultad:
+          type: string
+    PQRSRequest:
+      type: object
+      properties:
+        tipo:
+          type: string
+        descripcion:
+          type: string
+        idUsuario:
+          type: number
+        fechaCreacion:
+          type: string
+    ReservasResponse:
+      type: object
+      properties:
+        idReserva:
+          type: number
+        idUsuario:
+          type: number
+        fechaRegistro:
+          type: string
+          format: date
+        fechaInicio:
+          type: string
+          format: date
+        fechaFin:
+          type: string
+          format: date
+        estado:
+          type: string
+        idBicicleta:
+          type: number
+        idRuta:
+          type: number
+    ProductosPorOrdenesResponse:
+      type: object
+      properties:
+        idProducto:
+          type: number
+        idOrden:
+          type: number
+        precio:
+          type: number
+    CatalogoProductosResponse:
+      type: object
+      properties:
+        idProducto:
+          type: number
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        precio:
+          type: number
+        estado:
+          type: string
+        disponibilidad:
+          type: boolean
+        idBicicleta:
+          type: number
+        idTipoProducto:
+          type: string
